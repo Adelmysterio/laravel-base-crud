@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pokemon;
+use App\Models\Pokemon;
 use Illuminate\Http\Request;
 
 class PokemonController extends Controller
@@ -12,7 +12,8 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        //
+        $pokemons = Pokemon::all();
+        return view('home', compact('pokemons'));
     }
 
     /**
@@ -34,15 +35,15 @@ class PokemonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(pokemon $pokemon)
+    public function show(Pokemon $pokemon)
     {
-        //
+        return view('show', compact('pokemon'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(pokemon $pokemon)
+    public function edit(Pokemon $pokemon)
     {
         //
     }
@@ -58,7 +59,7 @@ class PokemonController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(pokemon $pokemon)
+    public function destroy(Pokemon $pokemon)
     {
         //
     }
