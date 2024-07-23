@@ -166,9 +166,11 @@ class PokemonSeeder extends Seeder
             ['name' => 'Mewtwo', 'type' => 'Psychic', 'img_url' => 'https://img.pokemondb.net/sprites/black-white/anim/normal/mewtwo.gif', 'ability' => 'Pressure'],
             ['name' => 'Mew', 'type' => 'Psychic', 'img_url' => 'https://img.pokemondb.net/sprites/black-white/anim/normal/mew.gif', 'ability' => 'Synchronize'],
         ];
-        foreach ($pokemons as $singlePokemonData) {
+        foreach ($pokemons as $index => $singlePokemonData) {
+
             $pokemon = new Pokemon();
             $pokemon->name = $singlePokemonData['name'];
+            $pokemon->pokedex_index = $index+1;
             $pokemon->type = $singlePokemonData['type'];
             $pokemon->img_url = $singlePokemonData['img_url'];
             $pokemon->ability = $singlePokemonData['ability'];

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('pokemon', function (Blueprint $table) {
             $table->id();
+            $table->smallInteger('pokedex_index');
             $table->string('name');
             $table->string('type');
             $table->string('img_url');
