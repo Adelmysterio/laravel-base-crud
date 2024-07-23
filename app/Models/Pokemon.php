@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Pokemon extends Model
 {
     use HasFactory;
+    protected $fillable =
+    [
+        'pokedex_index',
+        'name',
+        'type',
+        'img_url',
+        'ability',
+    ];
 }

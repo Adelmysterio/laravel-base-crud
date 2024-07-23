@@ -15,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [PokemonController::class, 'index'])->name('home.index');
-Route::get('/{pokemon}', [PokemonController::class, 'show'])->name('home.index.show');
+Route::get('/', [PokemonController::class, 'index'])->name('admin.index');
+Route::post('/', [PokemonController::class, 'store'])->name('admin.store');
+Route::get('/create', [PokemonController::class, 'create'])->name('admin.index.create');
+Route::get('/{pokemon}', [PokemonController::class, 'show'])->name('admin.index.show');

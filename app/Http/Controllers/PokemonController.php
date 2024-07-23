@@ -21,7 +21,7 @@ class PokemonController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -29,7 +29,10 @@ class PokemonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $newPokemon = new Pokemon($data);
+        $newPokemon->save();
+        return redirect()->route('admin.index.show', $newPokemon);
     }
 
     /**
