@@ -13,7 +13,7 @@ class PokemonController extends Controller
     public function index()
     {
         $pokemons = Pokemon::all();
-        return view('home', compact('pokemons'));
+        return view('pokemon.index', compact('pokemons'));
     }
 
     /**
@@ -21,7 +21,7 @@ class PokemonController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('pokemon.create');
     }
 
     /**
@@ -32,7 +32,7 @@ class PokemonController extends Controller
         $data = $request->all();
         $newPokemon = new Pokemon($data);
         $newPokemon->save();
-        return redirect()->route('admin.index.show', $newPokemon);
+        return redirect()->route('pokemon.show', $newPokemon);
     }
 
     /**
@@ -40,7 +40,7 @@ class PokemonController extends Controller
      */
     public function show(Pokemon $pokemon)
     {
-        return view('show', compact('pokemon'));
+        return view('pokemon.show', compact('pokemon'));
     }
 
     /**
@@ -48,7 +48,7 @@ class PokemonController extends Controller
      */
     public function edit(Pokemon $pokemon)
     {
-        //
+        return view('pokemon.edit', compact('pokemon'));
     }
 
     /**
@@ -56,7 +56,10 @@ class PokemonController extends Controller
      */
     public function update(Request $request, pokemon $pokemon)
     {
-        //
+        $data = $request->all();
+        $pokemon->update($data);
+
+        return redirect()->route('pokemon.index');
     }
 
     /**

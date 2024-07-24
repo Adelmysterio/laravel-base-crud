@@ -3,7 +3,7 @@
 @section('main-content')
     <div class="container-fuild">
         <div class="row justify-content-center">
-            <form action="{{ route('admin.store') }}" method="POST" class="col-6">
+            <form action="{{ route('pokemon.store') }}" method="POST" class="col-6">
                 @csrf
 
                 <div class="form-group">

@@ -19,7 +19,7 @@
                     <td>{{ $pokemon->type }}</td>
                     <td>{{ $pokemon->ability }}</td>
                     <td>
-                        <a href="{{ route('admin.index.show', $pokemon) }}" class="btn btn-primary">View</a>
+                        <a href="{{ route('pokemon.show', $pokemon) }}" class="btn btn-primary">View</a>
                     </td>
                 </tr>
             @endforeach
