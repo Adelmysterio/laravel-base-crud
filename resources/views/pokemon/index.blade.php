@@ -9,6 +9,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Type</th>
                 <th scope="col">Ability</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,12 @@
                     <td>{{ $pokemon->ability }}</td>
                     <td>
                         <a href="{{ route('pokemon.show', $pokemon) }}" class="btn btn-primary">View</a>
+                        <a href="{{ route('pokemon.edit', $pokemon) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('pokemon.destroy', $pokemon) }}" method="POST" class="d-inline-block">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
