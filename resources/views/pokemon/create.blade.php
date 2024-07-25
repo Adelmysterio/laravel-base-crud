@@ -3,6 +3,16 @@
 @section('main-content')
     <div class="container-fuild">
         <div class="row justify-content-center">
+            <h1>Create a new pokemon</h1>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{ route('pokemon.store') }}" method="POST" class="col-6">
                 @csrf
 

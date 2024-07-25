@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePokemonRequest;
 use App\Models\Pokemon;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemons = Pokemon::all();
+        $pokemons = Pokemon::orderBy('pokedex_index')->get();
         return view('pokemon.index', compact('pokemons'));
     }
 
@@ -27,9 +28,9 @@ class PokemonController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePokemonRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $newPokemon = new Pokemon($data);
         $newPokemon->save();
         return redirect()->route('pokemon.show', $newPokemon);
@@ -54,9 +55,9 @@ class PokemonController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, pokemon $pokemon)
+    public function update(StorePokemonRequest $request, pokemon $pokemon)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $pokemon->update($data);
 
         return redirect()->route('pokemon.index');
@@ -68,7 +69,7 @@ class PokemonController extends Controller
     public function destroy(Pokemon $pokemon)
     {
         $pokemon->delete();
-        
+
         return redirect()->route('pokemon.index');
     }
 }

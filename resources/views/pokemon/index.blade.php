@@ -15,7 +15,7 @@
         <tbody>
             @foreach ($pokemons as $pokemon)
                 <tr>
-                    <th scope="row">{{ $pokemon->id }}</th>
+                    <th scope="row">{{ $pokemon->pokedex_index }}</th>
                     <td>{{ $pokemon->name }}</td>
                     <td>{{ $pokemon->type }}</td>
                     <td>{{ $pokemon->ability }}</td>
